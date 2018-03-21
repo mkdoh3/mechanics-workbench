@@ -1,6 +1,6 @@
 import React from 'react';
 import AttacksTableRow from './AttacksTableRow';
-import calculateAttackDamage from '../../utils/calculateAttackDamage';
+import calculateAttackDamage from '../utils/calculateAttackDamage';
 
 const AttackTable = ({characterStats, weaponStats, attacks}) => {
 
