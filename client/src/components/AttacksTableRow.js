@@ -1,13 +1,12 @@
 import React from 'react';
 
 const AttackTableRow = ({ data }) => {
-  console.log('row data', data)
   return (
   <tr>
     <td>{data.name}</td>
-    <td>{data.min}</td>
-    <td>{data.max}</td>
-    <td>{data.DPS}</td>
+    <td>{data.min.toFixed(3)}</td>
+    <td>{data.max.toFixed(3)}</td>
+    <td>{data.DPS.toFixed(3)}</td>
   </tr>
 )}
 

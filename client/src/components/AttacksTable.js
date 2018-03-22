@@ -1,5 +1,6 @@
 import React from 'react';
 import AttacksTableRow from './AttacksTableRow';
+import { Table } from 'react-bootstrap';
 import calculateAttackDamage from '../utils/calculateAttackDamage';
 
 const AttackTable = ({characterStats, weaponStats, attacks}) => {
@@ -13,7 +14,7 @@ const AttackTable = ({characterStats, weaponStats, attacks}) => {
     />)
   
   return (
-    <table>
+    <Table striped bordered condensed hover>
       <thead>
         <tr>
           <td></td>
@@ -25,7 +26,7 @@ const AttackTable = ({characterStats, weaponStats, attacks}) => {
       <tbody>
         { rows }
       </tbody>
-    </table>
+    </Table>
   )
 }
 

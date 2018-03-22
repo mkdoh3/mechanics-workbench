@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Col, Row, Grid, PageHeader, Jumbotron } from 'react-bootstrap';
 
 import AddWeapon from './AddWeapon';
 import AttacksTable from './AttacksTable';
@@ -44,7 +45,7 @@ export default class CopyCatApp extends Component {
     })
     const body = await res.json();
     this.setState(() => ({
-      availableWeapons: body.weapons
+      availableWeapons: body[0].weapons
     }))
   };
 
@@ -62,7 +63,6 @@ export default class CopyCatApp extends Component {
     }
   }))
 }
-
   render() {
     if(!this.state.selectedCharacter) {
       return (
@@ -70,13 +70,19 @@ export default class CopyCatApp extends Component {
       )
     } else {
       return (
-        <div>
-          <Header title='CopyCat Gaming Inc.' />
+        <Grid>
+          <PageHeader>
+            CopyCat Gaming Inc. <small> Never first, but never the worst..</small>
+          </PageHeader>
+          <Jumbotron>
           <Character
             { ...this.state.selectedCharacter }
             handleLevelUp={ this.handleLevelUp }
           />
-          <div>
+          </Jumbotron>
+          <Jumbotron >
+          <p style={{textAlign: 'center'}}> Equipped a weapon to get started!</p>
+          <div style={{display: 'flex', justifyContent: 'space-around'}}>
             {this.state.availableWeapons.map((weapon, index) => {
               return (
                 <Weapon
@@ -86,17 +92,18 @@ export default class CopyCatApp extends Component {
                 />
               )
             })}
-            <AddWeapon postNewWeapon={ this.postNewWeapon }/>
           </div>
-          {this.state.equippedWeapon ? 
-            <AttacksTable 
-              characterStats={ this.state.selectedCharacter }
-              weaponStats={ this.state.equippedWeapon }
-              attacks={ this.state.availableAttacks }
-            /> :
-            <p>Equip a weapon to get started!</p> 
-          }
-        </div>    
+          </Jumbotron>
+   
+          {this.state.equippedWeapon && 
+          <AttacksTable 
+            characterStats={ this.state.selectedCharacter }
+             weaponStats={ this.state.equippedWeapon }
+            attacks={ this.state.availableAttacks }
+          />}
+  
+            <AddWeapon postNewWeapon={ this.postNewWeapon }/>
+        </Grid>    
       )
     }
   }
