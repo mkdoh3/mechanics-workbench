@@ -1,26 +1,41 @@
 import React from 'react';
+import styled from 'styled-components';
 import CharacterLevel from './CharacterLevel';
-import { Grid, Col, Row } from 'react-bootstrap';
-import xena from '../assets/xena.png'
+import xena from '../assets/xena.png';
+
+const FlexDiv = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const Content = styled.div`
+  text-align: center;
+  background-color: antiquewhite;
+  border-radius: 3%;
+  padding: 1rem;
+`;
+
+const Image = styled.img`
+  height: 175px;
+  width: 225;
+`;
 
 const Character = ({ name, type, level, strength, vitality, primary, handleLevelUp }) => (
-  <div style={{display: 'flex', justifyContent: 'space-around'}}>
-    <div style={{textAlign: 'center'}}>
-      <h2>{ name }</h2>
+  <FlexDiv>
+    <Content>
+      <h3>{ name }</h3>
       <h4>{`Xerox ${ type } princess`}</h4>
-      <img style={{height: '200px', width: '250px'}}src={ xena } alt="warrior princess" />
-    </div>
-    <div>
-      <h4>Character Stats:</h4>
-      <p>{`primary stat: ${ primary }`}</p>
-      <p>{ `level: ${ level }` }</p> 
-      <p>{`vitality: ${ vitality }`}</p> 
-      <p>{ `strength: ${ strength }` }</p>
+      <Image src={ xena } alt="warrior princess" />
+    </Content>
+    <Content>
+      <h3>Character Stats</h3>
+      <h4>{ `level: ${ level }` }</h4> 
+      <h4>{`vitality: ${ vitality }`}</h4> 
+      <h4>{ `strength: ${ strength }` }</h4>
+      <h4>{`primary stat: ${ primary }`}</h4>
       <CharacterLevel handleLevelUp={ handleLevelUp }/>
-    </div>
-  </div>
-)
-
-
+    </Content>
+  </FlexDiv>
+);
 
 export default Character;

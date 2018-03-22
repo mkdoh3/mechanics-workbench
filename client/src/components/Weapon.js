@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { Col, Grid, Label, Badge } from 'react-bootstrap';
+import React from 'react';
+import styled from 'styled-components';
+import { Label, Badge } from 'react-bootstrap';
 
 import axe from '../assets/axe.png';
 import mace from '../assets/mace.png';
@@ -11,27 +12,48 @@ const images = {
   "mace": mace
 }
 
-export default class Weapon extends Component {
-  state = {
-    equipt: false
-  }
-  
-  handleOnClick = () => {
-    this.props.handleEquipItem()
-    this.setState(() => ({equipt: true}))
-  }
+const Div = styled.div`
+  text-align: center;
+`;
 
-  render() {
-    const { name, type, APS, STRMod, minDmg, maxDmg, elemental } = this.props
+const Stat = styled.p`
+  margin: 0 !important;
+  font-size: 1.5rem !important;
+`;
+
+const Name = styled.p`
+  margin: 0 !important;
+  font-size: 1.75rem !important;
+`;
+
+const Image = styled.img`
+  height: 50px;
+  width: 50px;
+  margin: 1.5rem 0;
+`;
+
+const Weapon = (props) => {
+    const { name, type, APS, STRMod, minDmg, maxDmg, elemental, handleEquipItem } = props
     return (    
-      <div style={{textAlign: 'center', border: this.state.equipt && '5px solid yellow'}} onClick={this.handleOnClick}>
-        <p><Label>{ name }</Label></p>
-        <img style={{height: '50px', width: '50px', margin:'2rem auto'}} src={ images[type] } alt={ type } />
-        <p style={{fontSize:'1.5rem'}}><Badge>Damage: { minDmg }-{ maxDmg } </Badge></p>
-        <p style={{fontSize:'1.5rem'}}><Badge>Str: { `+${STRMod}` }</Badge></p>
-        <p style={{fontSize:'1.5rem'}}><Badge>APS: { APS }</Badge></p>
-        { elemental && <p style={{fontSize:'1.5rem'}}><Badge>{ elemental.type }: +%{parseFloat(elemental.dmgMod) * 100}</Badge></p>}
-      </div>
+      <Div style={ {textAlign: 'center'} } onClick={handleEquipItem}>
+        <Name>
+          <Label bsStyle="primary">{ name }</Label>
+        </Name>
+        <Image style={ {boxShadow: props.isEquipped ? '0px 0px 50px 5px #ffe20c' : 'none'} } src={ images[type] } alt={ type } />
+        <div>
+          <Stat>
+            <Badge>Damage: { minDmg }-{ maxDmg } </Badge>
+          </Stat>
+          <Stat>
+            <Badge>Str: { `+${STRMod}` }</Badge>
+          </Stat>
+          <Stat>
+            <Badge>APS: { APS }</Badge>
+          </Stat>
+          { elemental && <Stat><Badge>{ elemental.type }: +%{parseFloat(elemental.dmgMod) * 100}</Badge></Stat> }
+        </div>
+      </Div>
     )
   }
-}
+
+  export default Weapon;

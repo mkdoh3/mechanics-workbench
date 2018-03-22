@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { FormControl } from 'react-bootstrap';
+
+const Div = styled.div`
+  padding: 1rem;
+`;
 
 export default class CharacterLevel extends Component {
   state = {
     error: undefined,
   }
+  
   handleLevelChange = (event) => {
     event.preventDefault();
     const level = event.target.value;
@@ -17,9 +23,10 @@ export default class CharacterLevel extends Component {
       this.setState(() => ({ error: 'Levels range from 1 to 90' }))
     }
   }
+
   render() {
     return (
-      <div>
+      <Div>
         <p>No grinding required!</p>
         <FormControl 
           type="number" 
@@ -28,7 +35,7 @@ export default class CharacterLevel extends Component {
           placeholder="enter new level.." 
           onChange={this.handleLevelChange} />
         {this.state.error && <small>{ this.state.error }</small>}
-      </div>
-    )
+      </Div>
+    );
   }
 }

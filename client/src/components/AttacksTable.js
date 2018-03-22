@@ -10,8 +10,8 @@ const AttackTable = ({characterStats, weaponStats, attacks}) => {
   const rows = rowData.map((data, index) => 
     <AttacksTableRow 
       key={ index } 
-      data={ data } 
-    />)
+      data={ data } />
+    )
   
   return (
     <Table striped bordered condensed hover>
@@ -29,5 +29,4 @@ const AttackTable = ({characterStats, weaponStats, attacks}) => {
     </Table>
   )
 }
-
 export default AttackTable;

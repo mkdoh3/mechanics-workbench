@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import { Col, Row, Grid, PageHeader, Jumbotron } from 'react-bootstrap';
+import { Grid, PageHeader, Jumbotron } from 'react-bootstrap';
+import styled from 'styled-components';
 
 import AddWeapon from './AddWeapon';
 import AttacksTable from './AttacksTable';
 import Character from './Character';
-import Header from './Header';
 import Weapon from './Weapon';
+
+const Heading = styled.p`
+  text-align: center;
+`;
+const FlexDiv = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`;
 
 export default class CopyCatApp extends Component {
   state = {
@@ -51,7 +60,7 @@ export default class CopyCatApp extends Component {
 
   handleEquipItem = (index) => {
     this.setState(() => ({ equippedWeapon: this.state.availableWeapons[index] }));
-  }
+  };
  
   handleLevelUp = (level) => {
     this.setState(() => ({
@@ -60,9 +69,10 @@ export default class CopyCatApp extends Component {
         level,
         strength: level * 10,
         vitality: level * 5
-    }
-  }))
-}
+      }
+    }));
+  };
+  
   render() {
     if(!this.state.selectedCharacter) {
       return (
@@ -81,27 +91,26 @@ export default class CopyCatApp extends Component {
           />
           </Jumbotron>
           <Jumbotron >
-          <p style={{textAlign: 'center'}}> Equipped a weapon to get started!</p>
-          <div style={{display: 'flex', justifyContent: 'space-around'}}>
+          <Heading> Equipped a weapon to get started!</Heading>
+          <FlexDiv>
             {this.state.availableWeapons.map((weapon, index) => {
               return (
                 <Weapon
                   { ...weapon }
-                  key={ index } 
+                  key={ index }
+                  isEquipped={this.state.equippedWeapon === this.state.availableWeapons[index] ? true : false} 
                   handleEquipItem={ () => this.handleEquipItem(index) } 
                 />
               )
             })}
-          </div>
+          </FlexDiv>
           </Jumbotron>
-   
           {this.state.equippedWeapon && 
           <AttacksTable 
             characterStats={ this.state.selectedCharacter }
              weaponStats={ this.state.equippedWeapon }
             attacks={ this.state.availableAttacks }
           />}
-  
             <AddWeapon postNewWeapon={ this.postNewWeapon }/>
         </Grid>    
       )
