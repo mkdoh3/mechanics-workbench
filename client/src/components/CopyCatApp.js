@@ -7,82 +7,86 @@ import Header from './Header';
 import Weapon from './Weapon';
 
 export default class CopyCatApp extends Component {
- state = {
-   availableWeapons: null,
-   availableAttacks: null,
-   selectedCharacter: null,
-   equippedWeapon: null
- }
+  state = {
+    availableWeapons: null,
+    availableAttacks: null,
+    selectedCharacter: null,
+    equippedWeapon: null
+  }
 
- componentDidMount() {
-  this.fetchGameData()
-    .then(res => {
-      const gameData = res[0];
-      this.setState(() => ({
-        selectedCharacter: gameData.characters[0],
-        availableAttacks: gameData.attacks,
-        availableWeapons: gameData.weapons,
-      }))
+  componentDidMount() {
+    this.fetchGameData()
+      .then(res => {
+        const gameData = res[0];
+        this.setState(() => ({
+          selectedCharacter: gameData.characters[0],
+          availableAttacks: gameData.attacks,
+          availableWeapons: gameData.weapons,
+        }))
+      }
+    )
+  }
+
+  fetchGameData = async () => {
+    const res = await fetch('/api/game-data')
+    const body = await res.json()
+    return body;
+  }
+
+  postNewWeapon = async (weapon) => {
+    const res = await fetch('./api/add-weapon', {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(weapon)
     })
- }
+    const body = await res.json();
+    this.setState(() => ({
+      availableWeapons: body.weapons
+    }))
+  };
 
- fetchGameData = async () => {
-   const response = await fetch('/api/game-data')
-   const body = await response.json()
-   return body;
- }
-
- handleEquipItem = (index) => {
-  this.setState(() => ({ equippedWeapon: this.state.availableWeapons[index] }));
- }
+  handleEquipItem = (index) => {
+    this.setState(() => ({ equippedWeapon: this.state.availableWeapons[index] }));
+  }
  
- handleLevelUp = (level) => {
-  this.setState(() => ({
-    selectedCharacter: {
-      ...this.state.selectedCharacter,
-      level,
-      strength: level * 10,
-      vitality: level * 5
+  handleLevelUp = (level) => {
+    this.setState(() => ({
+      selectedCharacter: {
+        ...this.state.selectedCharacter,
+        level,
+        strength: level * 10,
+        vitality: level * 5
     }
   }))
 }
-  
+
   render() {
     if(!this.state.selectedCharacter) {
       return (
         <h1>fetching game data... </h1>
       )
     } else {
-      const { name, type, level, strength, vitality, primary } = this.state.selectedCharacter;
       return (
         <div>
           <Header title='CopyCat Gaming Inc.' />
           <Character
-            name={ name }
-            type={ type }
-            level={ level }
-            strength={ strength }
-            vitality={ vitality }
-            primary={ primary }
+            { ...this.state.selectedCharacter }
             handleLevelUp={ this.handleLevelUp }
           />
-          <div style={{display: 'flex', justifyContent: 'space-around'}}>
+          <div>
             {this.state.availableWeapons.map((weapon, index) => {
-            const  { name, type, minDmg, maxDmg, APS, elemental } = weapon;
               return (
                 <Weapon
-                  key={ index }
-                  name={ name } 
-                  type={ type }
-                  minDmg={ minDmg }
-                  maxDmg={ maxDmg }
-                  APS={ APS }
-                  elemental={ elemental ? elemental : null } 
+                  { ...weapon }
+                  key={ index } 
                   handleEquipItem={ () => this.handleEquipItem(index) } 
                 />
               )
             })}
-            <AddWeapon />
+            <AddWeapon postNewWeapon={ this.postNewWeapon }/>
           </div>
           {this.state.equippedWeapon ? 
             <AttacksTable 

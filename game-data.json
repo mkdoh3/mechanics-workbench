@@ -1,65 +1,162 @@
-
-[{
-  "characters" : [{
-    "name": "Lena",
-    "type": "warrior",
-    "level": 1,
-    "strength": 10,
-    "vitality": 5,
-    "primary": "strength" 
-  }],
-  "attacks" : [{
-    "name": "Plain-old Punch",
-    "APSMod": 1,
-    "attackType": "physical",
-    "dmgMod": 1
-  },
+[
   {
-    "name": "Firemost Smite",
-    "APSMod": 1.2,
-    "attackType": "fire",
-    "dmgMod": 0.9
-  },
-  {
-    "name": "Frosty Cleave",
-    "APSMod": 0.9,
-    "attackType": "cold",
-    "dmgMod": 1.2
-  }],
-  "weapons" : [{
-    "name": "Adamant Spanner",
-    "type": "mace",
-    "minDmg": 45,
-    "maxDmg": 70,
-    "APS": 1,
-    "STRMod": 20,
-    "elemental": { 
-      "type": "physical",
-      "dmgMod": 0.125
-    }
-  },
-  {
-    "name": "Railsplitter",
-    "type": "axe",
-    "minDmg": 50,
-    "maxDmg": 65,
-    "APS": 1.2,
-    "STRMod": 20,
-    "elemental": { 
-      "type": "fire",
-      "dmgMod": 0.1
-    }
-  },
-  {
-    "name": "Flaming Poisoning Raging Sword Of Doom",
-    "type": "sword",
-    "minDmg": 5,
-    "maxDmg": 150,
-    "APS": 1.4,
-    "STRMod": 20,
-    "elemental": { 
-      "type": "fire",
-      "dmgMod": 0.15
-    }
-  }]
-}]
+    "characters": [
+      {
+        "name": "Lena",
+        "type": "warrior",
+        "level": 1,
+        "strength": 10,
+        "vitality": 5,
+        "primary": "strength"
+      }
+    ],
+    "attacks": [
+      {
+        "name": "Plain-old Punch",
+        "APSMod": 1,
+        "attackType": "physical",
+        "dmgMod": 1
+      },
+      {
+        "name": "Firemost Smite",
+        "APSMod": 1.2,
+        "attackType": "fire",
+        "dmgMod": 0.9
+      },
+      {
+        "name": "Frosty Cleave",
+        "APSMod": 0.9,
+        "attackType": "cold",
+        "dmgMod": 1.2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Adamant Spanner",
+        "type": "mace",
+        "minDmg": 45,
+        "maxDmg": 70,
+        "APS": 1,
+        "STRMod": 20,
+        "elemental": {
+          "type": "physical",
+          "dmgMod": 0.12
+        }
+      },
+      {
+        "name": "Railsplitter",
+        "type": "axe",
+        "minDmg": 50,
+        "maxDmg": 65,
+        "APS": 1.2,
+        "STRMod": 20,
+        "elemental": {
+          "type": "fire",
+          "dmgMod": 0.1
+        }
+      },
+      {
+        "name": "Flaming Poisoning Raging Sword Of Doom",
+        "type": "sword",
+        "minDmg": 5,
+        "maxDmg": 150,
+        "APS": 1.4,
+        "STRMod": 20,
+        "elemental": {
+          "type": "fire",
+          "dmgMod": 0.15
+        }
+      },
+      {
+        "name": "poop flinger",
+        "type": "mace",
+        "minDmg": "10",
+        "maxDmg": "15",
+        "APS": 1,
+        "STRMod": "1",
+        "elemental": {
+          "type": "physical",
+          "dmgMod": 0
+        }
+      },
+      {
+        "name": "asd",
+        "type": "mace",
+        "minDmg": "2",
+        "maxDmg": "3",
+        "APS": 1,
+        "STRMod": "4",
+        "elemental": {
+          "type": "---",
+          "dmgMod": 0
+        }
+      },
+      {
+        "name": "123123",
+        "type": "mace",
+        "minDmg": "33232",
+        "maxDmg": "3232",
+        "APS": 1,
+        "STRMod": "323232",
+        "elemental": {
+          "type": "---",
+          "dmgMod": 2323.23
+        }
+      },
+      {
+        "name": "12123123",
+        "type": "mace",
+        "minDmg": "",
+        "maxDmg": "324234",
+        "APS": 1,
+        "STRMod": "234234",
+        "elemental": {
+          "type": "---",
+          "dmgMod": 0
+        }
+      },
+      {
+        "name": "asdasdad",
+        "type": "mace",
+        "minDmg": "33",
+        "maxDmg": "33",
+        "APS": 1,
+        "STRMod": "44",
+        "elemental": {
+          "type": "---",
+          "dmgMod": 0
+        }
+      },
+      {
+        "name": "op[-0-",
+        "type": "mace",
+        "minDmg": "89",
+        "maxDmg": "9",
+        "APS": 1,
+        "STRMod": "89",
+        "elemental": {
+          "type": "---",
+          "dmgMod": 0
+        }
+      },
+      {
+        "name": "gg",
+        "type": "mace",
+        "minDmg": "999999",
+        "maxDmg": "99999",
+        "APS": 1,
+        "STRMod": "9999",
+        "elemental": {}
+      },
+      {
+        "name": "33444",
+        "type": "mace",
+        "minDmg": "455",
+        "maxDmg": "234",
+        "APS": 1,
+        "STRMod": "23",
+        "elemental": null
+      }
+    ]
+  }
+]
