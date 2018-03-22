@@ -5,13 +5,13 @@ import calculateAttackDamage from '../utils/calculateAttackDamage';
 
 const AttackTable = ({characterStats, weaponStats, attacks}) => {
 
-  const rowData = calculateAttackDamage(characterStats, weaponStats, attacks)
+  const rowData = calculateAttackDamage(characterStats, weaponStats, attacks);
   
   const rows = rowData.map((data, index) => 
     <AttacksTableRow 
       key={ index } 
       data={ data } />
-    )
+    );
   
   return (
     <Table striped bordered condensed hover>
@@ -27,6 +27,7 @@ const AttackTable = ({characterStats, weaponStats, attacks}) => {
         { rows }
       </tbody>
     </Table>
-  )
+  );
 }
+
 export default AttackTable;

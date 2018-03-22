@@ -4,7 +4,7 @@ export default function calculateAttackDamage(characterStats, weaponStats, attac
   const data = [];
   const STRMod = (characterStats.strength + weaponStats.STRMod) / 100;
   attacks.forEach((attack, index) => {
-    const output = {}
+    const output = {};
     const APS = weaponStats.APS * attack.APSMod;
     output.name = attack.name;
     output.min = (weaponStats.minDmg * STRMod) * attack.dmgMod;
@@ -12,10 +12,10 @@ export default function calculateAttackDamage(characterStats, weaponStats, attac
     if(attack.attackType === weaponStats.elemental.type) {
       const bonusMod = weaponStats.elemental.dmgMod;
       output.min += (output.min * bonusMod);
-      output.max += (output.max * bonusMod)
+      output.max += (output.max * bonusMod);
     }
     output.DPS = ((output.min + output.max) / 2) * APS;
-    data.push(output)
+    data.push(output);
   })
   return data;
 }

@@ -10,7 +10,7 @@ export default class CharacterLevel extends Component {
   state = {
     error: undefined,
   }
-  
+
   handleLevelChange = (event) => {
     event.preventDefault();
     const level = event.target.value;
@@ -21,7 +21,7 @@ export default class CharacterLevel extends Component {
       this.props.handleLevelUp(level)
     } else {
       this.setState(() => ({ error: 'Levels range from 1 to 90' }))
-    }
+    };
   }
 
   render() {
@@ -37,5 +37,5 @@ export default class CharacterLevel extends Component {
         {this.state.error && <small>{ this.state.error }</small>}
       </Div>
     );
-  }
+  };
 }

@@ -21,6 +21,15 @@ app.put('/api/add-weapon', (req, res) => {
   json[0].weapons.push(newWeapon);
   fs.writeFileSync('game-data.json', JSON.stringify(json, null, 2))
   res.send(json)
-})
+});
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.delete('/api/delete-weapon', (req, res) => {
+  const index = req.body.index
+  const data = fs.readFileSync('game-data.json')
+  const json = JSON.parse(data);
+  json[0].weapons.splice(index, 1);
+  fs.writeFileSync('game-data.json', JSON.stringify(json, null, 2))
+  res.send(json)
+});
+
+app.listen(port, () => console.log(`Port ${port} open and ready for traffic!`));

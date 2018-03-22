@@ -12,7 +12,7 @@ const Content = styled.div`
   text-align: center;
   background-color: antiquewhite;
   border-radius: 3%;
-  padding: 1rem;
+  padding: 2rem 3rem;
 `;
 
 const Image = styled.img`
@@ -20,19 +20,34 @@ const Image = styled.img`
   width: 225;
 `;
 
+const Title = styled.p`
+  margin: 1rem 0 !important;
+  font-size: 3rem !important;
+`;
+
+const SubTitle = styled.p`
+  margin: 1rem 0 2rem 0 !important;
+  font-size: 2.25rem !important;
+`;
+
+const Stat = styled.p`
+  margin: 1rem 0 !important;
+  font-size: 1.6rem !important;
+`;
+
 const Character = ({ name, type, level, strength, vitality, primary, handleLevelUp }) => (
   <FlexDiv>
     <Content>
-      <h3>{ name }</h3>
-      <h4>{`Xerox ${ type } princess`}</h4>
+      <Title>{ name }</Title>
+      <SubTitle>{`Xerox ${ type } princess`}</SubTitle>
       <Image src={ xena } alt="warrior princess" />
     </Content>
     <Content>
-      <h3>Character Stats</h3>
-      <h4>{ `level: ${ level }` }</h4> 
-      <h4>{`vitality: ${ vitality }`}</h4> 
-      <h4>{ `strength: ${ strength }` }</h4>
-      <h4>{`primary stat: ${ primary }`}</h4>
+      <Title>Character Stats</Title>
+      <Stat>{ `level: ${ level }` }</Stat> 
+      <Stat>{`vitality: ${ vitality }`}</Stat> 
+      <Stat>{ `strength: ${ strength }` }</Stat>
+      <Stat>{`primary stat: ${ primary }`}</Stat>
       <CharacterLevel handleLevelUp={ handleLevelUp }/>
     </Content>
   </FlexDiv>
