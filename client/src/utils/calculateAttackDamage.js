@@ -3,7 +3,7 @@
 export default function calculateAttackDamage(characterStats, weaponStats, attacks) {
   const data = [];
   const STRMod = (characterStats.strength + weaponStats.STRMod) / 100;
-  attacks.forEach((attack, index) => {
+  attacks.forEach(attack => {
     const output = {};
     const APS = weaponStats.APS * attack.APSMod;
     output.name = attack.name;

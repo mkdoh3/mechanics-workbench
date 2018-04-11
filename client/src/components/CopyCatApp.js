@@ -30,11 +30,11 @@ export default class CopyCatApp extends Component {
   componentDidMount() {
     this.fetchGameData()
       .then(res => {
-        const gameData = res[0];
+        console.log('game data', res)
         this.setState(() => ({
-          selectedCharacter: gameData.characters[0],
-          availableAttacks: gameData.attacks,
-          availableWeapons: gameData.weapons,
+          selectedCharacter: res.characters[0],
+          availableAttacks: res.attacks,
+          availableWeapons: res.weapons,
         }));
       }
     );
